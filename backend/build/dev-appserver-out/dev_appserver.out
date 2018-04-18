@@ -1,23 +1,23 @@
 Warning: Google App Engine Java 7 runtime is deprecated.
 Warning: See https://cloud.google.com/appengine/docs/deprecations/java7
-Apr 13, 2018 2:21:20 PM java.util.prefs.WindowsPreferences <init>
+Apr 16, 2018 8:40:06 AM java.util.prefs.WindowsPreferences <init>
 WARNING: Could not open/create prefs root node Software\JavaSoft\Prefs at root 0x80000002. Windows RegCreateKeyEx(...) returned error code 5.
-Apr 13, 2018 2:21:20 PM com.google.appengine.tools.development.SystemPropertiesManager setSystemProperties
+Apr 16, 2018 8:40:07 AM com.google.appengine.tools.development.SystemPropertiesManager setSystemProperties
 INFO: Overwriting system property key 'java.util.logging.config.file', value 'C:\Users\Silky\AppData\Local\Google\Cloud SDK\google-cloud-sdk\platform\google_appengine\google\appengine\tools\java\config\sdk\logging.properties' with value 'WEB-INF/logging.properties' from 'C:\Users\Silky\Desktop\version_control\Udacity\FinalProject\backend\build\exploded-backend\WEB-INF\appengine-web.xml'
-Apr 13, 2018 2:21:20 PM com.google.apphosting.utils.jetty.JettyLogger info
+Apr 16, 2018 8:40:07 AM com.google.apphosting.utils.jetty.JettyLogger info
 INFO: Logging to JettyLogger(null) via com.google.apphosting.utils.jetty.JettyLogger
-Apr 13, 2018 1:21:20 PM com.google.appengine.tools.development.IsolatedAppClassLoader checkWorkingDirectory
+Apr 16, 2018 7:40:07 AM com.google.appengine.tools.development.IsolatedAppClassLoader checkWorkingDirectory
 WARNING: Your working directory, (C:\Users\Silky\Desktop\version_control\Udacity\FinalProject\backend) is not equal to your 
 web application root (C:\Users\Silky\Desktop\version_control\Udacity\FinalProject\backend\build\exploded-backend)
 You will not be able to access files from your working directory on the production server.
 
-Apr 13, 2018 1:21:20 PM com.google.apphosting.utils.jetty.JettyLogger info
+Apr 16, 2018 7:40:07 AM com.google.apphosting.utils.jetty.JettyLogger info
 INFO: jetty-6.1.x
-Apr 13, 2018 1:21:21 PM com.google.apphosting.utils.jetty.JettyLogger info
+Apr 16, 2018 7:40:08 AM com.google.apphosting.utils.jetty.JettyLogger info
 INFO: Started SelectChannelConnector@localhost:8080
-Apr 13, 2018 1:21:21 PM com.google.appengine.tools.development.AbstractModule startup
+Apr 16, 2018 7:40:08 AM com.google.appengine.tools.development.AbstractModule startup
 INFO: Module instance default is running at http://localhost:8080/
-Apr 13, 2018 1:21:21 PM com.google.appengine.tools.development.AbstractModule startup
+Apr 16, 2018 7:40:08 AM com.google.appengine.tools.development.AbstractModule startup
 INFO: The admin console is running at http://localhost:8080/_ah/admin
-Apr 13, 2018 2:21:21 PM com.google.appengine.tools.development.DevAppServerImpl doStart
+Apr 16, 2018 8:40:08 AM com.google.appengine.tools.development.DevAppServerImpl doStart
 INFO: Dev App Server is now running
