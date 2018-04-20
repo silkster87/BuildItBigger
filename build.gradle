@@ -14,6 +14,29 @@ buildscript {
     }
 }
 
+wrapper {
+    gradleVersion = '4.6'
+}
+
+task startGCE(dependsOn:":backend:appengineStart"){
+       doLast{ println("GCEstarted.") }
+}
+
+task runAndroidTests(dependsOn:":app:connectedAndroidTest"){
+     doLast{   println("Tests run...") }
+}
+
+task stopGCE(dependsOn:":backend:appengineStop"){
+       doLast{ println("GCE stopped.") }
+}
+
+task runGCEtest(dependsOn: "startGCE"){
+    finalizedBy "stopGCE"
+}
+
+runAndroidTests.mustRunAfter("startGCE")
+stopGCE.mustRunAfter("runAndroidTests")
+
 allprojects {
     repositories {
         jcenter()

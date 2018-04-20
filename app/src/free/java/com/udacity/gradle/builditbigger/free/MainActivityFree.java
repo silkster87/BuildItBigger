@@ -1,12 +1,12 @@
 package com.udacity.gradle.builditbigger.free;
 
-import android.content.Context;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.android.javajoketeller.JokeTeller;
 import com.google.android.gms.ads.AdListener;
@@ -18,11 +18,15 @@ import com.udacity.gradle.builditbigger.R;
 public class MainActivityFree extends AppCompatActivity {
 
     private InterstitialAd mInterstitial;
+    public ProgressBar spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        spinner = findViewById(R.id.progressBar1);
+        spinner.setVisibility(View.GONE);
 
         mInterstitial = new InterstitialAd(this);
         mInterstitial.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
@@ -63,11 +67,19 @@ public class MainActivityFree extends AppCompatActivity {
         mInterstitial.setAdListener(new AdListener(){
             @Override
             public void onAdClosed() {
+                spinner.setVisibility(View.VISIBLE);
                 JokeTeller jokeTeller = new JokeTeller();
                 String joke = jokeTeller.tellJoke();
                 //  Toast.makeText(this, jokeTeller.tellJoke(), Toast.LENGTH_SHORT).show();
                 EndpointsAsyncTask getTask = new EndpointsAsyncTask();
-                getTask.execute(new Pair<>(getApplicationContext(), joke));            }
+                getTask.setListener(new EndpointsAsyncTask.EndPointListener() {
+                    @Override
+                    public void finishTask() {
+                        spinner.setVisibility(View.GONE);
+                    }
+                });
+                getTask.execute(new Pair<>(getApplicationContext(), joke));
+            }
         });
 
     }

@@ -23,6 +23,17 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
     private Context context;
     private Exception mError = null;
 
+    EndPointListener listener;
+
+    public interface EndPointListener{
+         void finishTask();
+    }
+
+    public EndpointsAsyncTask setListener(EndPointListener listener){
+        this.listener = listener;
+        return this;
+    }
+
     @Override
     protected String doInBackground(Pair<Context, String>... params) {
         if(myApiService == null) {  // Only do this once
@@ -57,6 +68,7 @@ public class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
 
     @Override
     protected void onPostExecute(String result) {
+        if(listener!=null) this.listener.finishTask();
         Intent intent = new Intent(context, JokeTellingActivity.class);
         intent.putExtra(JOKE, result);
         context.startActivity(intent);
