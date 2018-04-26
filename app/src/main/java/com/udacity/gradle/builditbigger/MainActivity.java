@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.example.android.javajoketeller.JokeTeller;
-import com.google.android.gms.ads.InterstitialAd;
 
 
 public class MainActivity extends AppCompatActivity {

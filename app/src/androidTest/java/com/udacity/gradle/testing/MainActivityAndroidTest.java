@@ -11,9 +11,11 @@ import com.example.android.javajoketeller.JokeTeller;
 import com.udacity.gradle.builditbigger.EndpointsAsyncTask;
 import com.udacity.gradle.builditbigger.MainActivity;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.w3c.dom.Text;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,6 +23,9 @@ import java.util.concurrent.TimeUnit;
 @RunWith(AndroidJUnit4.class)
 public class MainActivityAndroidTest extends AndroidTestCase{
 
+    private JokeTeller jokeTeller = new JokeTeller();
+    private String joke = jokeTeller.tellJoke();
+    private String result = null;
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule =
@@ -28,10 +33,12 @@ public class MainActivityAndroidTest extends AndroidTestCase{
 
 
     @Test
+    public void testVerifyJokeIsNotNull(){
+        assertFalse(TextUtils.isEmpty(joke));
+    }
+
+    @Test
     public void testVerifyAsyncTaskTakesNonEmptyString(){
-        JokeTeller jokeTeller = new JokeTeller();
-        String joke = jokeTeller.tellJoke();
-        String result = null;
         Context context = mActivityTestRule.getActivity().getApplicationContext();
 
         try{
@@ -44,5 +51,6 @@ public class MainActivityAndroidTest extends AndroidTestCase{
         }
 
         assertFalse(TextUtils.isEmpty(result));
+        assertFalse(result.contains("error"));
     }
 }
